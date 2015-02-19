@@ -1,0 +1,6 @@
+node_modules/
+bower_components/
+.c9
+karma_html/
+npm-debug.log
+.idea

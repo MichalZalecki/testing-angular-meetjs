@@ -1,0 +1,17 @@
+{
+  "name": "anguloffee",
+  "description": "AngularJS with CoffeeScript",
+  "version": "1.0.0",
+  "authors": [
+    "Michal Zalecki <michal@michalzalecki.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0",
+    "jquery": "~2.1.3"
+  }
+}

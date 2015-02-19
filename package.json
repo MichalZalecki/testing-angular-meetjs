@@ -1,0 +1,26 @@
+{
+  "name": "anguloffee",
+  "version": "1.0.0",
+  "description": "AngularJS with CoffeeScript",
+  "scripts": {
+    "test": "karma start",
+
+    "start": "http-server -c-1",
+    "start-c9": "http-server -a $IP -p $PORT -c-1",
+
+    "coffee": "coffee -cw -o app/js/ app/coffee/",
+
+    "protractor": "protractor e2e-tests/conf.js"
+  },
+  "author": "Michal Zalecki <michal@michalzalecki.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-html-reporter": "^0.2.6",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}
