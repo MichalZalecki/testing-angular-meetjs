@@ -1,0 +1,10 @@
+<h1>GitHub Repos</h1>
+<hr/>
+<form novalidate name="gitform" class="form-group form-group-inline">
+    <button class="btn btn-default" ng-click="getRepos()" ng-disabled="gitform.$invalid">Get Repos <i class="glyphicon glyphicon-sort-by-attributes"></i></button>
+    <input type="text" required class="form-control" placeholder="GitHub username" ng-model="user.name" />
+</form>
+<h2>{{ msg }}</h2>
+<ol>
+    <li ng-repeat="repo in repos">{{ repo }}</li>
+</ol>
