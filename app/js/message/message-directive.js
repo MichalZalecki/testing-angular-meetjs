@@ -11,7 +11,6 @@
         fn: '&'
       },
       link: function(scope, element, attr) {
-        console.log(scope.index);
         return scope.close = function() {
           if ((attr.fn != null) && (attr.index != null)) {
             return scope.fn({

@@ -11,7 +11,6 @@ angular.module 'message.message-directive', []
     fn: '&'
   }
   link: (scope, element, attr) ->
-    console.log(scope.index);
     scope.close = () ->
       if attr.fn? and attr.index?
         # let fn handle the cleaning up

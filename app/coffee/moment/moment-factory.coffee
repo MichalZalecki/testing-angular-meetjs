@@ -2,5 +2,5 @@
 
 angular.module 'moment.moment-factory', []
 
-.factory 'moment', () ->
+.factory 'moment', ->
   window.moment

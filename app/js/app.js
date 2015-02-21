@@ -11,8 +11,8 @@
           text: text
         });
       };
-      return $scope.removeMsg = function(id) {
-        return $scope.msgs.splice(id, 1);
+      return $scope.removeMsg = function(index) {
+        return $scope.msgs.splice(index, 1);
       };
     }
   ]).constant('appName', 'meet.js Wrocław').config([

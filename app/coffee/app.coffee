@@ -14,9 +14,8 @@ angular.module 'myApp', [
   $scope.msgs = []
   $scope.addMsg = (style, text) ->
     $scope.msgs.push {style: style, text: text}
-  $scope.removeMsg = (id) ->
-    # console.log "Close message #{id}"
-    $scope.msgs.splice(id, 1)
+  $scope.removeMsg = (index) ->
+    $scope.msgs.splice(index, 1)
 ]
 
 .constant 'appName', 'meet.js Wrocław'
