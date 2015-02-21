@@ -32,8 +32,8 @@
       return $httpBackend.flush();
     });
     return it('should be rejected with "Not Found"', function() {
-      $httpBackend.expect('GET', 'https://api.github.com/users/NotExisting/repos').respond(404, void 0, void 0, "Not Found");
-      GitHubRepos.ofUser("NotExisting").then(void 0, function(err) {
+      $httpBackend.expect('GET', 'https://api.github.com/users/MichalZalecki/repos').respond(404, void 0, void 0, "Not Found");
+      GitHubRepos.ofUser("MichalZalecki").then(void 0, function(err) {
         return expect(err).toEqual("Not Found");
       });
       return $httpBackend.flush();

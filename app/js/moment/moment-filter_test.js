@@ -2,19 +2,14 @@
 (function() {
   'use strict';
   describe('momentFilter', function() {
-    var $filter;
-    $filter = null;
     beforeEach(module('moment'));
-    beforeEach(inject(function(_$filter_) {
-      return $filter = _$filter_;
-    }));
-    it('should have default DD-MM-YYYY format', function() {
+    it('should have default DD-MM-YYYY format', inject(function($filter) {
       return expect($filter('moment')('2015-02-23', 'YYYY-MM-DD')).toEqual('23-02-2015');
-    });
-    return it('should work with custom formats', function() {
+    }));
+    return it('should work with custom formats', inject(function($filter) {
       expect($filter('moment')('2015-02-23 10:35', 'YYYY-MM-DD H:mm', 'Ha, Do MMM YY')).toEqual('10am, 23rd Feb 15');
       return expect($filter('moment')('2015-02-23', 'YYYY-MM-DD', 'Q')).toEqual('1');
-    });
+    }));
   });
 
 }).call(this);

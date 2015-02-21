@@ -31,11 +31,11 @@ describe 'GitHubReposService', ->
   it 'should be rejected with "Not Found"', () ->
 
     $httpBackend
-      .expect 'GET', 'https://api.github.com/users/NotExisting/repos'
+      .expect 'GET', 'https://api.github.com/users/MichalZalecki/repos'
       # function([status,] data[, headers, statusText]
       .respond 404, undefined, undefined, "Not Found"
 
-    GitHubRepos.ofUser("NotExisting")
+    GitHubRepos.ofUser("MichalZalecki")
       .then undefined, (err) ->
         expect(err).toEqual "Not Found"
     $httpBackend.flush()
