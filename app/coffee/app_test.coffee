@@ -2,18 +2,19 @@
 
 describe 'myAppCtrl', ->
 
-  myAppCtrl = scope = null
+  scope = null
 
   beforeEach module 'myApp'
   beforeEach inject ($rootScope, $controller) ->
     scope = $rootScope.$new()
-    myAppCtrl = $controller 'myAppCtrl',
+    $controller 'myAppCtrl',
       '$scope': scope
-
+      appName: 'FakeAppName'
     scope.$digest()
 
-  it 'should have initial msgs value', ->
+  it 'should have initial msgs and appName values', ->
     expect(scope.msgs).toEqual []
+    expect(scope.appName).toEqual 'FakeAppName'
 
   it 'should have addMsg method', ->
     expect(scope.addMsg).toEqual jasmine.any Function

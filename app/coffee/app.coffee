@@ -9,7 +9,8 @@ angular.module 'myApp', [
   'message'
 ]
 
-.controller 'myAppCtrl',  [ '$scope', ($scope) ->
+.controller 'myAppCtrl',  [ '$scope', 'appName', ($scope, appName) ->
+  $scope.appName = appName;
   $scope.msgs = []
   $scope.addMsg = (style, text) ->
     $scope.msgs.push {style: style, text: text}
@@ -17,6 +18,8 @@ angular.module 'myApp', [
     # console.log "Close message #{id}"
     $scope.msgs.splice(id, 1)
 ]
+
+.constant 'appName', 'meet.js Wrocław'
 
 .config ['$urlRouterProvider', '$stateProvider', ($urlRouterProvider, $stateProvider) ->
 

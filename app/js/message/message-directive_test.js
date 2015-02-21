@@ -2,23 +2,23 @@
 (function() {
   'use strict';
   describe('message directive', function() {
-    var $compile, element, isolateScope, scope;
-    element = scope = isolateScope = $compile = null;
+    var $compile, element, scope;
+    element = scope = $compile = null;
     beforeEach(module('message.message-directive'));
-    beforeEach(inject(function($rootScope) {
+    beforeEach(inject(function($rootScope, _$compile_) {
+      $compile = _$compile_;
       scope = $rootScope.$new();
       scope.style = 'success';
       return scope.text = 'Hello, World!';
     }));
     describe('with index and fn', function() {
-      beforeEach(inject(function(_$compile_) {
-        $compile = _$compile_;
+      beforeEach(function() {
         scope.fn = function(id) {};
         spyOn(scope, 'fn');
-        element = '<message style="{{ style }}" index="123" fn="fn(index)">{{ text }}</message>';
+        element = '<message style="{{ style }}" index="3" fn="fn(index)">{{ text }}</message>';
         element = $compile(element)(scope);
         return scope.$digest();
-      }));
+      });
       it('should have .alert.alert-success and .close', function() {
         expect(element.find('.alert.alert-success').length).toEqual(1);
         return expect(element.find('.close').length).toEqual(1);
@@ -29,23 +29,27 @@
       return it('should call fn on close', function() {
         expect(scope.fn).not.toHaveBeenCalled();
         element.find('.close').click();
-        return expect(scope.fn).toHaveBeenCalledWith('123');
+        return expect(scope.fn).toHaveBeenCalledWith('3');
       });
     });
     return describe('without index and fn', function() {
-      beforeEach(inject(function($compile) {
+      var isolateScope;
+      isolateScope = null;
+      beforeEach(function() {
+        scope.style = 'info';
+        scope.text = 'Hello, Wroclaw!';
         element = '<message style="{{ style }}">{{ text }}</message>';
         element = $compile(element)(scope);
         scope.$digest();
         isolateScope = element.isolateScope();
         return spyOn(isolateScope, '$destroy');
-      }));
-      it('should have .alert.alert-success and .close', function() {
-        expect(element.find('.alert.alert-success').length).toEqual(1);
+      });
+      it('should have .alert.alert-info and .close', function() {
+        expect(element.find('.alert.alert-info').length).toEqual(1);
         return expect(element.find('.close').length).toEqual(1);
       });
       it('should have message', function() {
-        return expect(element.text()).toContain('Hello, World!');
+        return expect(element.text()).toContain('Hello, Wroclaw!');
       });
       it('should call scope.$destroy on close', function() {
         expect(isolateScope.$destroy).not.toHaveBeenCalled();

@@ -2,7 +2,8 @@
 (function() {
   'use strict';
   angular.module('myApp', ['ui.router', 'partial-controllers', 'version', 'github-repos', 'moment', 'message']).controller('myAppCtrl', [
-    '$scope', function($scope) {
+    '$scope', 'appName', function($scope, appName) {
+      $scope.appName = appName;
       $scope.msgs = [];
       $scope.addMsg = function(style, text) {
         return $scope.msgs.push({
@@ -14,7 +15,7 @@
         return $scope.msgs.splice(id, 1);
       };
     }
-  ]).config([
+  ]).constant('appName', 'meet.js Wrocław').config([
     '$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
       $urlRouterProvider.otherwise('/');
       return $stateProvider.state('home', {

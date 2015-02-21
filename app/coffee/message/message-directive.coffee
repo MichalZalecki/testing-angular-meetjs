@@ -2,7 +2,7 @@
 
 angular.module 'message.message-directive', []
 
-.directive 'message', ['$timeout', ($timeout) ->
+.directive 'message', ->
   restrict: 'E'
   transclude: true
   scope: {
@@ -11,18 +11,18 @@ angular.module 'message.message-directive', []
     fn: '&'
   }
   link: (scope, element, attr) ->
+    console.log(scope.index);
     scope.close = () ->
       if attr.fn? and attr.index?
+        # let fn handle the cleaning up
         scope.fn({index: scope.index})
       else
         element.remove()
+        # permanently detached from the parent
         scope.$destroy()
-
-    # $timeout scope.close, 5000
 
   template:
     '<div class="alert alert-{{ style }}" role="alert">' +
       '<button type="button" class="close" ng-click="close()"><span>&times;</span></button>' +
       '<span ng-transclude></span>' +
     '</div>'
-]

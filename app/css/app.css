@@ -2,6 +2,15 @@
    It looks like a good place to put your CSS.
    ========================================================================== */
 
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
 .form-group-inline {
     display: flex;
 }

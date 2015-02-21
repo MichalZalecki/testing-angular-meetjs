@@ -2,18 +2,20 @@
 (function() {
   'use strict';
   describe('myAppCtrl', function() {
-    var myAppCtrl, scope;
-    myAppCtrl = scope = null;
+    var scope;
+    scope = null;
     beforeEach(module('myApp'));
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
-      myAppCtrl = $controller('myAppCtrl', {
-        '$scope': scope
+      $controller('myAppCtrl', {
+        '$scope': scope,
+        appName: 'FakeAppName'
       });
       return scope.$digest();
     }));
-    it('should have initial msgs value', function() {
-      return expect(scope.msgs).toEqual([]);
+    it('should have initial msgs and appName values', function() {
+      expect(scope.msgs).toEqual([]);
+      return expect(scope.appName).toEqual('FakeAppName');
     });
     it('should have addMsg method', function() {
       return expect(scope.addMsg).toEqual(jasmine.any(Function));
