@@ -6,12 +6,16 @@ angular.module 'myApp', [
   'version'
   'github-repos'
   'moment'
+  'message'
 ]
 
 .controller 'myAppCtrl',  [ '$scope', ($scope) ->
   $scope.msgs = []
   $scope.addMsg = (style, text) ->
     $scope.msgs.push {style: style, text: text}
+  $scope.removeMsg = (id) ->
+    # console.log "Close message #{id}"
+    $scope.msgs.splice(id, 1)
 ]
 
 .config ['$urlRouterProvider', '$stateProvider', ($urlRouterProvider, $stateProvider) ->

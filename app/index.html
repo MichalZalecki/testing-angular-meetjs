@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp" ng-controller="myApp.myAppCtrl" ng-strict-di>
-<!--<html lang="en" ng-app="myApp" ng-controller="myApp.myAppCtrl">-->
+<html lang="en" ng-app="myApp" ng-controller="myAppCtrl" ng-strict-di>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,13 +26,14 @@
     </nav>
 
     <div class="container">
-        <main class="row">
+        <header class="row">
             <div class="col-xs-12">
-                <ul>
-                    <li ng-repeat="mgs in msgs">{{ mgs.text }}, {{ mgs.style }}</li>
-                </ul>
+                <message style="info">Hello meet.js Wrocław!</message>
+                <div ng-repeat="(index, msg) in msgs">
+                    <message style="{{ msg.style }}" index="{{ index }}" fn="removeMsg(index)">{{ msg.text }}</message>
+                </div>
             </div>
-        </main>
+        </header>
         <main class="row">
             <div class="col-xs-12" ui-view></div>
         </main>
@@ -59,6 +59,9 @@
     <script src="js/moment/moment.js"></script>
     <script src="js/moment/moment-factory.js"></script>
     <script src="js/moment/moment-filter.js"></script>
+
+    <script src="js/message/message.js"></script>
+    <script src="js/message/message-directive.js"></script>
 
     <script src="js/partialCtrls/partial-controllers.js"></script>
     <script src="js/partialCtrls/partial-controllers-home.js"></script>
