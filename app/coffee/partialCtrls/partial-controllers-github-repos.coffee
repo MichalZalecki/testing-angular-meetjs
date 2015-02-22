@@ -3,16 +3,17 @@
 angular.module 'partial-controllers.github-repos', []
 
 .controller 'GitHubReposCtrl', [ '$scope', 'GitHubRepos', ($scope, GitHubRepos) ->
-  $scope.user = {}
-  $scope.repos = []
-  $scope.msg = ''
+  $scope.GitHubReposCtrl = {}
+  $scope.GitHubReposCtrl.user = {}
+  $scope.GitHubReposCtrl.repos = []
+  $scope.GitHubReposCtrl.msg = ''
 
-  $scope.getRepos = () ->
-    GitHubRepos.ofUser($scope.user.name)
+  $scope.GitHubReposCtrl.getRepos = () ->
+    GitHubRepos.ofUser($scope.GitHubReposCtrl.user.name)
       .then (repos) ->
-        $scope.repos = repos
-        $scope.msg = "Found #{repos.length} repos"
+        $scope.GitHubReposCtrl.repos = repos
+        $scope.GitHubReposCtrl.msg = "Found #{repos.length} repos"
       , (err) ->
-        $scope.repos = []
-        $scope.msg = err
+        $scope.GitHubReposCtrl.repos = []
+        $scope.GitHubReposCtrl.msg = err
 ]

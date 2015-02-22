@@ -7,7 +7,8 @@
     beforeEach(module('partial-controllers.home'));
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
-      scope.addMsg = function() {};
+      scope.MainCtrl = {};
+      scope.MainCtrl.addMsg = function() {};
       scope.alertform = {
         $setPristine: function() {}
       };
@@ -15,27 +16,27 @@
         '$scope': scope
       });
       scope.$digest();
-      spyOn(scope, 'addMsg');
+      spyOn(scope.MainCtrl, 'addMsg');
       return spyOn(scope.alertform, '$setPristine');
     }));
     it('should set initial value', function() {
-      return expect(scope.alert).toEqual({});
+      return expect(scope.HomeCtrl.alert).toEqual({});
     });
     it('should have addAlert method', function() {
-      return expect(scope.addAlert).toEqual(jasmine.any(Function));
+      return expect(scope.HomeCtrl.addAlert).toEqual(jasmine.any(Function));
     });
     it('should call addMsg with style and alert.msg through addAlert', function() {
-      scope.alert.msg = 'Bar';
-      scope.addAlert('success');
-      return expect(scope.addMsg).toHaveBeenCalledWith('success', 'Bar');
+      scope.HomeCtrl.alert.msg = 'Bar';
+      scope.HomeCtrl.addAlert('success');
+      return expect(scope.MainCtrl.addMsg).toHaveBeenCalledWith('success', 'Bar');
     });
     return it('should call alertform.$setPrisitne and reset alert through addAlert', function() {
-      scope.alert.msg = 'FooBar';
-      expect(scope.alert).toEqual({
+      scope.HomeCtrl.alert.msg = 'FooBar';
+      expect(scope.HomeCtrl.alert).toEqual({
         msg: 'FooBar'
       });
-      scope.addAlert('success');
-      expect(scope.alert).toEqual({});
+      scope.HomeCtrl.addAlert('success');
+      expect(scope.HomeCtrl.alert).toEqual({});
       return expect(scope.alertform.$setPristine).toHaveBeenCalled();
     });
   });

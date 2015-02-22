@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module 'myApp', [
+angular.module 'app', [
   'ui.router'
   'partial-controllers'
   'version'
@@ -9,13 +9,16 @@ angular.module 'myApp', [
   'message'
 ]
 
-.controller 'myAppCtrl',  [ '$scope', 'appName', ($scope, appName) ->
-  $scope.appName = appName;
-  $scope.msgs = []
-  $scope.addMsg = (style, text) ->
-    $scope.msgs.push {style: style, text: text}
-  $scope.removeMsg = (index) ->
-    $scope.msgs.splice(index, 1)
+.controller 'MainCtrl',  [ '$scope', 'appName', ($scope, appName) ->
+  $scope.MainCtrl = {}
+  $scope.MainCtrl.appName = appName;
+  $scope.MainCtrl.msgs = []
+
+  $scope.MainCtrl.addMsg = (style, text) ->
+    $scope.MainCtrl.msgs.push {style: style, text: text}
+
+  $scope.MainCtrl.removeMsg = (index) ->
+    $scope.MainCtrl.msgs.splice(index, 1)
 ]
 
 .constant 'appName', 'meet.js Wrocław'

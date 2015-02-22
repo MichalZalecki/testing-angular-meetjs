@@ -3,16 +3,17 @@
   'use strict';
   angular.module('partial-controllers.github-repos', []).controller('GitHubReposCtrl', [
     '$scope', 'GitHubRepos', function($scope, GitHubRepos) {
-      $scope.user = {};
-      $scope.repos = [];
-      $scope.msg = '';
-      return $scope.getRepos = function() {
-        return GitHubRepos.ofUser($scope.user.name).then(function(repos) {
-          $scope.repos = repos;
-          return $scope.msg = "Found " + repos.length + " repos";
+      $scope.GitHubReposCtrl = {};
+      $scope.GitHubReposCtrl.user = {};
+      $scope.GitHubReposCtrl.repos = [];
+      $scope.GitHubReposCtrl.msg = '';
+      return $scope.GitHubReposCtrl.getRepos = function() {
+        return GitHubRepos.ofUser($scope.GitHubReposCtrl.user.name).then(function(repos) {
+          $scope.GitHubReposCtrl.repos = repos;
+          return $scope.GitHubReposCtrl.msg = "Found " + repos.length + " repos";
         }, function(err) {
-          $scope.repos = [];
-          return $scope.msg = err;
+          $scope.GitHubReposCtrl.repos = [];
+          return $scope.GitHubReposCtrl.msg = err;
         });
       };
     }

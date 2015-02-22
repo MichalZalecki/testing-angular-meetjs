@@ -22,27 +22,27 @@
       return scope.$digest();
     }));
     it('should set several initial values', function() {
-      scope.user.name = 'Foo';
-      expect(scope.user).toEqual({
+      scope.GitHubReposCtrl.user.name = 'Foo';
+      expect(scope.GitHubReposCtrl.user).toEqual({
         name: 'Foo'
       });
-      expect(scope.repos).toEqual([]);
-      return expect(scope.msg).toEqual('');
+      expect(scope.GitHubReposCtrl.repos).toEqual([]);
+      return expect(scope.GitHubReposCtrl.msg).toEqual('');
     });
     it('should have getRepos method', function() {
-      return expect(scope.getRepos).toEqual(jasmine.any(Function));
+      return expect(scope.GitHubReposCtrl.getRepos).toEqual(jasmine.any(Function));
     });
     it('should call GitHubRepos.ofUser with user.name through getRepos', function() {
-      scope.user.name = 'Bar';
-      scope.getRepos();
+      scope.GitHubReposCtrl.user.name = 'Bar';
+      scope.GitHubReposCtrl.getRepos();
       return expect(GitHubReposMock.ofUser).toHaveBeenCalledWith('Bar');
     });
     return it('should have repos and msg after getRepos call', function() {
       scope.$apply(function() {
-        return scope.getRepos();
+        return scope.GitHubReposCtrl.getRepos();
       });
-      expect(scope.repos).toEqual(['Repo 1', 'Repo 2', 'Repo 3']);
-      return expect(scope.msg).toEqual('Found 3 repos');
+      expect(scope.GitHubReposCtrl.repos).toEqual(['Repo 1', 'Repo 2', 'Repo 3']);
+      return expect(scope.GitHubReposCtrl.msg).toEqual('Found 3 repos');
     });
   });
 

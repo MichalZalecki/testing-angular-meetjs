@@ -21,22 +21,22 @@ describe 'GitHubReposCtrl', ->
     scope.$digest()
 
   it 'should set several initial values', ->
-    scope.user.name = 'Foo'
-    expect(scope.user).toEqual {name: 'Foo'}
-    expect(scope.repos).toEqual []
-    expect(scope.msg).toEqual ''
+    scope.GitHubReposCtrl.user.name = 'Foo'
+    expect(scope.GitHubReposCtrl.user).toEqual {name: 'Foo'}
+    expect(scope.GitHubReposCtrl.repos).toEqual []
+    expect(scope.GitHubReposCtrl.msg).toEqual ''
 
   it 'should have getRepos method', ->
-    expect(scope.getRepos).toEqual jasmine.any Function
+    expect(scope.GitHubReposCtrl.getRepos).toEqual jasmine.any Function
 
   it 'should call GitHubRepos.ofUser with user.name through getRepos', ->
-    scope.user.name = 'Bar'
-    scope.getRepos()
+    scope.GitHubReposCtrl.user.name = 'Bar'
+    scope.GitHubReposCtrl.getRepos()
     expect(GitHubReposMock.ofUser).toHaveBeenCalledWith('Bar')
 
   it 'should have repos and msg after getRepos call', ->
     scope.$apply () ->
-      scope.getRepos()
+      scope.GitHubReposCtrl.getRepos()
 
-    expect(scope.repos).toEqual ['Repo 1', 'Repo 2' , 'Repo 3']
-    expect(scope.msg).toEqual 'Found 3 repos'
+    expect(scope.GitHubReposCtrl.repos).toEqual ['Repo 1', 'Repo 2' , 'Repo 3']
+    expect(scope.GitHubReposCtrl.msg).toEqual 'Found 3 repos'

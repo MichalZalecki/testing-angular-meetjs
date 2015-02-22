@@ -3,10 +3,11 @@
   'use strict';
   angular.module('partial-controllers.home', []).controller('HomeCtrl', [
     '$scope', function($scope) {
-      $scope.alert = {};
-      return $scope.addAlert = function(style) {
-        $scope.addMsg(style, $scope.alert.msg);
-        $scope.alert = {};
+      $scope.HomeCtrl = {};
+      $scope.HomeCtrl.alert = {};
+      return $scope.HomeCtrl.addAlert = function(style) {
+        $scope.MainCtrl.addMsg(style, $scope.HomeCtrl.alert.msg);
+        $scope.HomeCtrl.alert = {};
         return $scope.alertform.$setPristine();
       };
     }

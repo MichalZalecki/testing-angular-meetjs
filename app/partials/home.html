@@ -1,9 +1,9 @@
 <h1>{{ appName }}</h1>
 <hr/>
 <form novalidate name="alertform" class="form-group form-group-inline">
-    <input type="text" class="form-control" placeholder="Message" required ng-model="alert.msg" />
-    <button class="btn btn-success" ng-disabled="alertform.$invalid" ng-click="addAlert('success')">Success</button>
-    <button class="btn btn-info" ng-disabled="alertform.$invalid" ng-click="addAlert('info')">Info</button>
-    <button class="btn btn-warning" ng-disabled="alertform.$invalid" ng-click="addAlert('warning')">Warning</button>
-    <button class="btn btn-danger" ng-disabled="alertform.$invalid" ng-click="addAlert('danger')">Danger</button>
+    <input type="text" class="form-control" placeholder="Message" required ng-model="HomeCtrl.alert.msg" />
+    <button class="btn btn-success" ng-disabled="alertform.$invalid" ng-click="HomeCtrl.addAlert('success')">Success</button>
+    <button class="btn btn-info" ng-disabled="alertform.$invalid" ng-click="HomeCtrl.addAlert('info')">Info</button>
+    <button class="btn btn-warning" ng-disabled="alertform.$invalid" ng-click="HomeCtrl.addAlert('warning')">Warning</button>
+    <button class="btn btn-danger" ng-disabled="alertform.$invalid" ng-click="HomeCtrl.addAlert('danger')">Danger</button>
 </form>

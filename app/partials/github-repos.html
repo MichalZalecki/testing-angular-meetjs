@@ -3,7 +3,7 @@
 <form novalidate name="gitform" class="form-group form-group-inline">
     <button
         class="btn btn-default"
-        ng-click="getRepos()"
+        ng-click="GitHubReposCtrl.getRepos()"
         ng-disabled="gitform.$invalid">
         Get Repos <i class="glyphicon glyphicon-sort-by-attributes"></i>
     </button>
@@ -13,9 +13,9 @@
         class="form-control"
         placeholder="GitHub username"
         name="username"
-        ng-model="user.name" />
+        ng-model="GitHubReposCtrl.user.name" />
 </form>
-<h2>{{ msg }}</h2>
+<h2>{{ GitHubReposCtrl.msg }}</h2>
 <ol>
-    <li ng-repeat="repo in repos">{{ ::repo }}</li>
+    <li ng-repeat="repo in GitHubReposCtrl.repos">{{ ::repo }}</li>
 </ol>
