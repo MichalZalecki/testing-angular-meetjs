@@ -13,9 +13,9 @@ describe 'meet.js Wrocław', ->
       browser.get 'http://localhost:8080/app/'
 
       alerts = element.all(By.css('.alert'))
-      messages = element.all(By.repeater('(index, msg) in msgs'))
+      messages = element.all(By.repeater('(index, msg) in MainCtrl.msgs'))
 
-      textfield = element(By.model("alert.msg"))
+      textfield = element(By.model("HomeCtrl.alert.msg"))
       btnSuccess = element(By.css(".btn-success"))
       btnInfo = element(By.css(".btn-info"))
       btnWarning = element(By.css(".btn-warning"))
@@ -71,10 +71,10 @@ describe 'meet.js Wrocław', ->
     beforeEach ->
       browser.get 'http://localhost:8080/app/#/github-repos'
 
-      textfield = element(By.model("user.name"))
+      textfield = element(By.model("GitHubReposCtrl.user.name"))
       btnGit = element(By.css(".btn-default"))
-      repos = element.all(By.repeater('repo in repos'))
-      msg = element(By.exactBinding('msg'))
+      repos = element.all(By.repeater('repo in GitHubReposCtrl.repos'))
+      msg = element(By.exactBinding('GitHubReposCtrl.msg'))
 
     it 'should have a title', ->
       expect(title.getText()).toEqual 'GitHub Repos'
