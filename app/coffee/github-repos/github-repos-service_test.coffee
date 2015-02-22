@@ -10,7 +10,9 @@ describe 'GitHubReposService', ->
     GitHubRepos = $injector.get('GitHubRepos')
 
   afterEach ->
+    # check if expected request ware made
     $httpBackend.verifyNoOutstandingExpectation()
+    # check for outstanding requests that need to be flushed
     $httpBackend.verifyNoOutstandingRequest()
 
   it 'should be resolved with list of repos of user', () ->
@@ -26,6 +28,7 @@ describe 'GitHubReposService', ->
     GitHubRepos.ofUser("MichalZalecki")
       .then (repos) ->
         expect(repos).toEqual ['Repo 1', 'Repo 2', 'Repo 3']
+    # flushes pending requests (no requests = exception)
     $httpBackend.flush()
 
   it 'should be rejected with "Not Found"', () ->
