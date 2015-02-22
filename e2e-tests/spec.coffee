@@ -1,3 +1,6 @@
+screenshot = require './screenshot'
+screenshot.config.path = 'e2e-tests/screenshots/'
+
 describe 'meet.js Wrocław', ->
 
   title = element(By.css('h1'))
@@ -17,6 +20,9 @@ describe 'meet.js Wrocław', ->
       btnInfo = element(By.css(".btn-info"))
       btnWarning = element(By.css(".btn-warning"))
       btnDanger = element(By.css(".btn-danger"))
+
+      afterEach ->
+        screenshot.take(jasmine.getEnv().currentSpec, true)
 
     it 'should have a title', ->
       expect(browser.getTitle()).toEqual 'meet.js Wrocław'
@@ -40,7 +46,7 @@ describe 'meet.js Wrocław', ->
       textfield.clear().sendKeys 'Info message'
       btnInfo.click()
       expect(messages.last().getText()).toContain 'Info message'
-      browser.pause()
+
       textfield.clear().sendKeys 'Warning message'
       btnWarning.click()
       expect(messages.last().getText()).toContain 'Warning message'
